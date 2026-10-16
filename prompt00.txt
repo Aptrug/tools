@@ -1,0 +1,5 @@
+Should I tell the dev who asked me to test his app that it's 100% secure against
+MITM tampering of weekly booking limit per service? are there any cases I've
+failed to cover?
+PS don't talk about about concurrent/firing multiple requests gap, I'm planning to
+test it not now or this session but until tomorrow
