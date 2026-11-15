@@ -1,0 +1,3 @@
+/usr/bin/Xorg ${DISPLAY} vt7 -ac -nolisten tcp &
+sleep 10
+/usr/bin/dwm
