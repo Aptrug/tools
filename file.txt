@@ -1,3 +1,67 @@
-/usr/bin/Xorg ${DISPLAY} vt7 -ac -nolisten tcp &
-sleep 10
-/usr/bin/dwm
+I'll start by reading the file-reading skill, then unpack the tar.
+
+The archive is small, so I'll extract it to a scratch directory and read everything.
+
+Now the README, then I'll compile and actually stress-test it.
+
+Now let me build it and test hard: multiple buffer sizes, ASan/valgrind, edge cases, and a reference comparison.
+
+(That `-o` error was just my sloppy first command; the real per-file compiles all passed.) No valgrind here, so I'll use ASan/UBSan/LeakSanitizer.
+
+Too much at once; let me find what's slow, with timeouts.
+
+`BUFFER_SIZE=1` on a 100k-char line takes 13.6s (quadratic), which I'll come back to. Let me rerun the sanitizer sweep with smaller long files and per-run timeouts.
+
+Core roundtrips are clean. Now the edge cases that evaluators like: huge buffer, stdin, bad fds, bonus multi-fd, and the fd-bound check I spotted in the code.
+
+Now the bonus-specific tests: interleaved fds, and the `fd > MAX_FILED` boundary.
+
+Confirmed real bug there. Last check: performance on realistic stress inputs, plus the leak behavior when a caller stops early.
+
+Two more things to check: whether the void-pointer arithmetic trips pedantic warnings (my earlier check was botched by the `-o` error), and whether the fixes I'm going to suggest actually work.
+
+**Almost, but not yet.** The mandatory part is solid. The bonus has one real memory bug, and the README has a few things a grader will notice.
+
+## What I tested
+- Compiles with `-Wall -Wextra -Werror`, with and without `-D BUFFER_SIZE`.
+- File round-trips under ASan and UBSan for `BUFFER_SIZE` from 1 to 10,000,000, both mandatory and bonus. Files covered: empty, only newlines, no trailing `\n`, newline exactly at a buffer boundary, 17k-char lines and 3000 random lines.
+- stdin via pipe and redirect.
+- fd `-1`, a closed fd, a directory, and repeated calls after EOF.
+- Bonus: three files read round-robin at several buffer sizes, with the output of each compared against the original.
+
+All of those passed with no sanitizer reports, and no leaks when I stop reading early.
+
+## Must fix
+**1. Bonus: off-by-one in the fd bound check (`get_next_line_bonus.c`).**
+```c
+if (fd < 0 || fd > MAX_FILED || BUFFER_SIZE <= 0)   // fd == 1024 passes
+```
+`fs` has `MAX_FILED` entries, so `fd == MAX_FILED` writes one slot past the array. ASan confirmed it: `global-buffer-overflow ... WRITE of size 4`. Your own README says "strictly smaller than `MAX_FILED`", so the code contradicts it. A crash is an automatic 0, and a reviewer will spot this by reading. Change `>` to `>=`.
+
+**2. README: "Ressources" should be "Resources".** The subject names that section explicitly. Also check:
+- **Login:** the README and headers say `mhmichi`, but the tar's file owner is `ysabraou`. The first line of the README must be your own login, so make sure they match.
+- **Typos:** `you_file.c` in the bonus compile command, and "accross".
+- **Outdated snippet:** the README shows `do_crazy_stuff(&f)`, but the real signature is `do_crazy_stuff(&f, &line)`.
+
+**3. Bonus header declares `char *get_line(t_f *f);`, which is never defined.** It's harmless to compile, but delete it.
+
+## Strongly recommended
+**Quadratic slowdown on long lines.** Every read re-measures the line with a byte-by-byte `ft_blksize` and copies it again in `ft_memjoin`. Timings I measured:
+
+| Input | `BUFFER_SIZE` | Time |
+|---|---|---|
+| 1M-char single line | 42 | **~25 s** |
+| 100k-char line | 1 | ~13.6 s |
+| 100k normal lines (5 MB) | 1 | 1.8 s |
+
+Normal files are fine. But evaluators like "huge line + small buffer" tests, and a timeout there fails you. The usual fix is to stop re-joining on every read: find the line length first, or grow the line in chunks.
+
+**The `ft_memset` block at the end of `get_next_line` is a hack.** After you consume a buffer exactly, you zero it but leave `bytes` unchanged. The next call then joins `bytes` zero bytes onto the line and relies on `strlen` to ignore them. With `BUFFER_SIZE=10000000` that is a 10 MB memset and a 10 MB copy for nothing. Setting `f.bytes = 0` instead (`fs[fd].bytes = 0` in the bonus) does the same job. I applied that and the bound fix on a copy and re-ran everything, including the multi-fd test and `fd == 1024`. It all passed, and `fd = 1024` now returns NULL.
+
+## Smaller notes
+- **Naming:** `do_crazy_stuff` and `read_more_stuff` will read badly to peers and recruiters, who are explicitly the README's audience. I'd rename them.
+- **Read errors:** if `read()` fails mid-line, you return the partial line instead of `NULL`. The subject says `NULL` on error. This is an edge case.
+- **Dead code:** `ft_memblk` is unused. The `void *` arithmetic is a GNU extension, so it compiles fine with your flags but warns under `-Wpedantic`.
+- **Mandatory static state:** it holds a single fd's state. That's allowed, and your README documents it, but expect to be asked about it in defense.
+
+After items 1–3, you're good to submit. The bonus only gets graded if the mandatory part is perfect, so I'd fix the performance issue too.
