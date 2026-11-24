@@ -1,0 +1,14 @@
+Exercice 09: ft_strrev
+
+Turn-in directory : ex09/
+Files to turn in  : ft_strrev.c
+Allowed functions : None
+
+* Write a function that reverses (in-place) a string.
+* It must return its parameter.
+
+* Here's how it should be prototyped :
+
+    char	*ft_strrev(char *str);
+
+(See ../SUBJECT.txt for the level-wide instructions and submission rules.)

@@ -1,0 +1,16 @@
+Exercice 04: ft_atoi
+
+Turn-in directory : ex04/
+Files to turn in  : ft_atoi.c
+Allowed functions : None
+
+* Write a function that converts the string argument str to an integer (type
+  int) and returns it.
+* It works much like the standard atoi(const char *str) function, see the
+  man.
+
+* Here's how it should be prototyped :
+
+    int	ft_atoi(const char *str);
+
+(See ../SUBJECT.txt for the level-wide instructions and submission rules.)

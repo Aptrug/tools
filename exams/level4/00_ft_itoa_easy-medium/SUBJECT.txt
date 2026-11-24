@@ -1,0 +1,15 @@
+Exercice 02: ft_itoa
+
+Turn-in directory : ex02/
+Files to turn in  : ft_itoa.c
+Allowed functions : malloc
+
+* Write a function that takes an int and converts it to a null-terminated
+  string. The function returns the result in a char array that you must
+  allocate.
+
+* Here's how it should be prototyped :
+
+    char	*ft_itoa(int nbr);
+
+(See ../SUBJECT.txt for the level-wide instructions and submission rules.)

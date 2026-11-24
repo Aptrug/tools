@@ -1,0 +1,27 @@
+Exercice 19: count_alpha
+
+Turn-in directory : ex19/
+Files to turn in  : count_alpha.c
+Allowed functions : write, printf
+
+* Write a Count_alpha program that takes a chain and displays the number of
+  occurrences of its alphabetical characters. The other characters are not
+  counted. Order is the order of appearance in the chain.
+* The display must be finished with a newline.
+* The format is in the examples.
+* If the number of arguments is not 1, just display a newline.
+
+* Examples:
+
+    $>./count_alpha abbcc
+    1a, 2b, 2c
+    $>./count_alpha "abbcc"
+    1a, 2b, 2c
+    $>./count_alpha "abbcc" "dddeef" | cat -e
+    $
+    $>./count_alpha "My Hyze 47y 7." | cat -e
+    1m, 3y, 1h, 1z, 1e$
+    $>./count_alpha "" | cat -e
+    $
+
+(See ../SUBJECT.txt for the level-wide instructions and submission rules.)

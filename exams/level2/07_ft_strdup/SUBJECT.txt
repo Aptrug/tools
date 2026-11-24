@@ -1,0 +1,13 @@
+Exercice 07: ft_strdup
+
+Turn-in directory : ex07/
+Files to turn in  : ft_strdup.c
+Allowed functions : malloc
+
+* Reproduce the behavior of the function strdup (man strdup).
+
+* Here's how it should be prototyped :
+
+    char	*ft_strdup(char *src);
+
+(See ../SUBJECT.txt for the level-wide instructions and submission rules.)

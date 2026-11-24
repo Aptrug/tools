@@ -1,0 +1,27 @@
+Exercice 03: ft_list_foreach
+
+Turn-in directory : ex03/
+Files to turn in  : ft_list_foreach.c, ft_list.h
+Allowed functions : None
+
+* Write a function that takes a list and a function pointer, and applies
+  this function to each element of the list.
+
+* Here's how it should be prototyped :
+
+    void	ft_list_foreach(t_list *begin_list, void (*f)(void *));
+
+* The function pointed to by f will be used as follows:
+
+    (*f)(list_ptr->data);
+
+* You must use the following structure, and turn it in as a file called
+  ft_list.h:
+
+    typedef struct    s_list
+    {
+        struct s_list *next;
+        void          *data;
+    }                 t_list;
+
+(See ../SUBJECT.txt for the level-wide instructions and submission rules.)

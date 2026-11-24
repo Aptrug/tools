@@ -1,0 +1,18 @@
+Exercice 12: max
+
+Turn-in directory : ex12/
+Files to turn in  : max.c
+Allowed functions : None
+
+* Write the following function:
+
+* Here's how it should be prototyped :
+
+    int	max(int *tab, unsigned int len);
+
+* The first parameter is an array of int, the second is the number of
+  elements in the array.
+* The function returns the largest number found in the array.
+* If the array is empty, the function returns 0.
+
+(See ../SUBJECT.txt for the level-wide instructions and submission rules.)

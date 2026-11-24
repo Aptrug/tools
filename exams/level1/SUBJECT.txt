@@ -1,0 +1,55 @@
+C Piscine - Exam 1
+Instructions (apply to every exercise in this level)
+
+This is the first level of the C piscine exam. It covers the most basic
+notions: strings, loops, and simple standard-output programs.
+
+* Only the official subject document serves as reference: do not trust
+  rumors.
+* Watch out! The subject document could potentially change up before
+  submission.
+* Make sure you have the appropriate permissions on your files and
+  directories.
+* You have to follow the submission procedures for all your exercises.
+* Your exercises will be checked and graded by a program called Moulinette.
+* Moulinette is very meticulous and strict in its evaluation of your work. It
+  is entirely automated and there is no way to negotiate with it. So if you
+  want to avoid bad surprises, be as thorough as possible.
+* Moulinette is not very open-minded. It won't try and understand your code
+  if it doesn't respect the Norm. Moulinette relies on a program called
+  norminette to check if your files respect the norm. TL;DR: it would be
+  idiotic to submit a piece of work that doesn't pass norminette's check.
+* These exercises are carefully laid out by order of difficulty - from
+  easiest to hardest. We will not take into account a successfully completed
+  harder exercise if an easier one is not perfectly functional.
+* Using a forbidden function is considered cheating. Cheaters get -42, and
+  this grade is non-negotiable.
+* You'll only have to submit a main() function if we ask for a program.
+* Moulinette compiles with these flags: -Wall -Wextra -Werror, and uses cc.
+* If your program doesn't compile, you'll get 0.
+* You cannot leave any additional file in your directory than those
+  specified in the subject.
+* Your reference guide is called Google / man / the Internet / ....
+* Examine the examples thoroughly. They could very well call for details
+  that are not explicitly mentioned in the subject...
+* By Odin, by Thor! Use your brain!!!
+
+Do not forget to add the standard 42 header in each of your .c/.h files. The
+norminette check its existence anyway!
+
+Norminette must be launched with the -R CheckForbiddenSourceHeader flag.
+Moulinette will use it too.
+
+Time limit
+
+This is a timed exam. Manage your time across exercises: they are ordered
+from easiest to hardest, and a harder exercise will not be taken into
+account if an easier one is not perfectly functional.
+
+Submission and peer-evaluation
+
+Turn in your assignment in your Git repository as usual. Only the work
+inside your repository will be evaluated during the defense. Don't hesitate
+to double check the names of your files to ensure they are correct.
+
+You need to return only the files requested by the subject of this exam.

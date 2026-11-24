@@ -1,0 +1,18 @@
+Exercice 08: sort_int_tab
+
+Turn-in directory : ex08/
+Files to turn in  : sort_int_tab.c
+Allowed functions : None
+
+* Write the following function:
+
+* Here's how it should be prototyped :
+
+    void	sort_int_tab(int *tab, unsigned int size);
+
+* It must sort (in-place) the 'tab' int array, that contains exactly 'size'
+  members, in ascending order.
+* Doubles must be preserved.
+* Input is always coherent.
+
+(See ../SUBJECT.txt for the level-wide instructions and submission rules.)

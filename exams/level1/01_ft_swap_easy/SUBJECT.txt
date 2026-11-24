@@ -1,0 +1,14 @@
+Exercice 05: ft_swap
+
+Turn-in directory : ex05/
+Files to turn in  : ft_swap.c
+Allowed functions : None
+
+* Write a function that swaps the contents of two integers the addresses of
+  which are passed as parameters.
+
+* Here's how it should be prototyped :
+
+    void	ft_swap(int *a, int *b);
+
+(See ../SUBJECT.txt for the level-wide instructions and submission rules.)

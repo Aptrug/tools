@@ -1,0 +1,13 @@
+Exercice 05: ft_strcmp
+
+Turn-in directory : ex05/
+Files to turn in  : ft_strcmp.c
+Allowed functions : None
+
+* Reproduce the behavior of the function strcmp (man strcmp).
+
+* Here's how it should be prototyped :
+
+    int	ft_strcmp(char *s1, char *s2);
+
+(See ../SUBJECT.txt for the level-wide instructions and submission rules.)

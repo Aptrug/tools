@@ -1,0 +1,13 @@
+Exercice 10: ft_strspn
+
+Turn-in directory : ex10/
+Files to turn in  : ft_strspn.c
+Allowed functions : None
+
+* Reproduce exactly the behavior of the function strspn (man strspn).
+
+* Here's how it should be prototyped :
+
+    size_t	ft_strspn(const char *s, const char *accept);
+
+(See ../SUBJECT.txt for the level-wide instructions and submission rules.)

@@ -1,0 +1,16 @@
+Exercice 13: print_bits
+
+Turn-in directory : ex13/
+Files to turn in  : print_bits.c
+Allowed functions : write
+
+* Write a function that takes a byte, and prints it in binary WITHOUT A
+  NEWLINE AT THE END.
+
+* Here's how it should be prototyped :
+
+    void	print_bits(unsigned char octet);
+
+* Example, if you pass 2 to print_bits, it will print "00000010"
+
+(See ../SUBJECT.txt for the level-wide instructions and submission rules.)

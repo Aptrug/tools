@@ -1,0 +1,13 @@
+Exercice 08: ft_strpbrk
+
+Turn-in directory : ex08/
+Files to turn in  : ft_strpbrk.c
+Allowed functions : None
+
+* Reproduce exactly the behavior of the function strpbrk (man strpbrk).
+
+* Here's how it should be prototyped :
+
+    char	*ft_strpbrk(const char *s1, const char *s2);
+
+(See ../SUBJECT.txt for the level-wide instructions and submission rules.)

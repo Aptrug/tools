@@ -1,0 +1,9 @@
+Exercice: only_a
+
+Turn-in directory : only_a/
+Files to turn in  : only_a.c
+Allowed functions : write
+
+* Write a program that displays a 'a' character on the standard output.
+
+(See ../SUBJECT.txt for the level-wide instructions and submission rules.)
